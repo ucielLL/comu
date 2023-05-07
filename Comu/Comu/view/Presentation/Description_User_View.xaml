@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Comu.view.Presentation.Description_User_View"
+             NavigationPage.HasNavigationBar="False">
+
+    <Grid   
+          Padding="10"  
+           RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height=".1*"/>
+            <RowDefinition Height=".20*"/>
+            <RowDefinition Height=".15*"/>
+            <RowDefinition Height=".20*"/>
+        </Grid.RowDefinitions>
+        <Image Grid.Row="0" Source="users" Aspect="AspectFill"/>
+
+        <Label Grid.Row="1"
+               Text="Comparte"
+               HorizontalTextAlignment="Center"
+               VerticalOptions="Center"
+               FontAttributes="Bold"
+               TextColor="White"
+               FontSize="Title"
+               Margin="0"
+            />
+        
+        <Label Grid.Row="2"
+               Text="Si quieres compartir tus colecciones de tarjetas te invitamos a registrarte  "
+               FontSize="Medium"
+               TextColor="White"
+                 HorizontalTextAlignment="Center"
+                 VerticalOptions="Center"
+               Margin="0,0,0,10"
+            />
+        <Button Grid.Row="3" 
+            CornerRadius="17"
+                Margin="40,5"
+                BackgroundColor="#F36D50"
+                Text="Registrate"
+                TextColor="#1B2631"
+                TextTransform="None"
+                FontSize="Title"
+                FontAttributes="Bold"
+                Clicked="Button_Clicked"
+                Padding="0,5"
+                />
+        <StackLayout Grid.Row="4"
+            Orientation="Vertical"
+                     Spacing="0"
+                     >
+            <StackLayout.GestureRecognizers >
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+            </StackLayout.GestureRecognizers>
+            <Image  
+                   Source="flecha" 
+                   HeightRequest="50"
+                   VerticalOptions="EndAndExpand"
+                   HorizontalOptions="EndAndExpand"
+                   Aspect="Fill"
+                  />
+            <Label 
+                Text="Saltar"
+                TextColor="WhiteSmoke"
+                HorizontalOptions="EndAndExpand"
+                FontSize="Small"
+                />
+
+        </StackLayout>
+    </Grid>
+
+</ContentView>

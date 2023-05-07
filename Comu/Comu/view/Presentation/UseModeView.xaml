@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Comu.view.Presentation.UseModeView">
+    <Grid  
+          Padding="10"  
+           RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height=".1*"/>
+            <RowDefinition Height=".25*"/>
+        </Grid.RowDefinitions>
+        <Image Grid.Row="0" Source="descrintionImage" Aspect="AspectFill"/>
+
+        <Label Grid.Row="1"
+               Text="Crea tarjetas"
+               HorizontalTextAlignment="Center"
+               VerticalOptions="Center"
+               FontAttributes="Bold"
+              TextColor="White"
+               FontSize="Title"
+               Margin="0"
+            />
+        <Label Grid.Row="2"
+               Text="COMU permite crear colecciones de tarjetas personalizadas mediante imágenes y texto"
+               FontSize="Medium"
+              TextColor="White"
+                 HorizontalTextAlignment="Center"
+                VerticalOptions="StartAndExpand"
+            />
+        <StackLayout Grid.Row="2"
+            Orientation="Vertical"
+                     Spacing="0"
+                     >
+            <StackLayout.GestureRecognizers >
+                <TapGestureRecognizer Tapped="GoToAppHome"/>
+            </StackLayout.GestureRecognizers>
+            <Image  
+                   Source="flecha" 
+                   HeightRequest="50"
+                   VerticalOptions="EndAndExpand"
+                   HorizontalOptions="EndAndExpand"
+                   Aspect="Fill"
+                  />
+            <Label 
+                Text="Saltar"
+                TextColor="WhiteSmoke"
+                HorizontalOptions="EndAndExpand"
+                FontSize="Small"
+                />
+
+        </StackLayout>
+
+    </Grid>
+</ContentView>

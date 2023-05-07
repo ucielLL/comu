@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Comu.view.YesOrNoView"
+              NavigationPage.HasNavigationBar="False" >
+    <Grid BackgroundColor="{Binding Background}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".1*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height=".1*"/>
+        </Grid.RowDefinitions>
+        <Image Source="Collections.png"  
+                Margin="5,8"
+               HorizontalOptions="EndAndExpand"
+               VerticalOptions="Start">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Command ="{Binding GoToCollectionsCommand}"/>
+            </Image.GestureRecognizers>
+        </Image>
+        <StackLayout Grid.Row="1"
+                     Orientation="Vertical" 
+                     Margin="15,10" 
+                     VerticalOptions="Center" 
+                    
+                    >
+            <Image Source="{Binding Image}"
+                   Aspect="AspectFit"/>
+            <Label Text="{Binding Text}"
+                   TextColor="Black"
+                   FontAttributes="Bold"
+                   FontSize="Header"
+                   HorizontalOptions="Center"/>
+           
+
+        </StackLayout>
+
+        <Image Source="reset.png"  Grid.Row="2" HorizontalOptions="EndAndExpand" Margin="10,8" >
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Command ="{Binding ResetCommand}"/>
+            </Image.GestureRecognizers>
+        </Image>
+    </Grid>
+    
+    
+</ContentPage>

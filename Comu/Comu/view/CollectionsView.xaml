@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:sharpnado="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
+             xmlns:local="clr-namespace:Comu.ViewModel"
+             x:Class="Comu.view.CollectionsView"
+             NavigationPage.HasNavigationBar="False">
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".1*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height=".1*"/>
+        </Grid.RowDefinitions>
+        <Image Grid.Row="0"
+            Source="back"
+               Margin="6,13"
+               VerticalOptions="Center"
+               HorizontalOptions="StartAndExpand">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding Back}"/>
+            </Image.GestureRecognizers>
+        </Image>
+        <Image Grid.Row="0"
+            Source="reset"
+               Margin="6,13"
+               VerticalOptions="Center"
+               HorizontalOptions="EndAndExpand">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding RefreshingCommand}"/>
+            </Image.GestureRecognizers>
+        </Image>
+        <Label Text="Mis colecciones"
+               TextColor="#1B2631"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               FontSize="Title"
+               FontAttributes="Bold"
+              />
+        <CollectionView Grid.Row="1"
+                        x:Name="collection"
+                        ItemsSource="{Binding ListCollections}" 
+                        Margin="10,0" 
+                        SelectionMode="Single"
+                        SelectionChangedCommand="{Binding Source={RelativeSource AncestorType={x:Type local:CollectionsViewModel}},Path= GoToCollectionCommad}"
+                        SelectionChangedCommandParameter="{Binding SelectedItem, Source={x:Reference collection}  }"
+                        >
+            <CollectionView.ItemsLayout  >
+                <GridItemsLayout Orientation="Vertical" Span="2" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate
+                >
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.TopItems>
+                            <SwipeItems>
+                                <SwipeItem
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:CollectionsViewModel}}, Path=DeleteColleccionCommand}"
+                                   CommandParameter="{Binding NameCollection}"
+                                    Text="Delete" 
+                                    BackgroundColor="Transparent"/>
+                            </SwipeItems>
+                        </SwipeView.TopItems>
+
+                        <Grid Padding="5">
+
+                            <Frame BackgroundColor="Transparent"
+                           Padding="0"
+                           CornerRadius="18">
+                                <Grid BackgroundColor="{Binding Color}"
+                              >
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height=".4*"/>
+                                    </Grid.RowDefinitions>
+                                    <sharpnado:MaterialFrame  Grid.RowSpan="2"
+                                    MaterialBlurStyle="Light"
+                                    MaterialTheme="AcrylicBlur"
+                                    />
+
+                                    <Image Source="imagenes" Grid.Row="0"
+                                   HeightRequest="100"
+                                   HorizontalOptions="CenterAndExpand"
+                                   VerticalOptions="StartAndExpand"
+                                   >
+                                    </Image>
+                                    <sharpnado:MaterialFrame  Grid.Row="1"
+                                    MaterialBlurStyle="Dark"
+                                    MaterialTheme="AcrylicBlur"
+                                    />
+                                    <Label Text="{Binding NameCollection}" Grid.Row="1"
+                                   TextColor="#F8F9F9"
+                                   FontSize="Medium"
+                                   FontAttributes="Bold"
+                                  HorizontalOptions="CenterAndExpand"
+                                   VerticalOptions="CenterAndExpand"/>
+
+                                </Grid>
+                            </Frame>
+                        </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+       
+        <Button Grid.Row="2"
+                BackgroundColor="#1B2631"
+                TextColor="#F36D50"
+                Text="+"
+                FontSize="Large"
+                FontAttributes="Bold"
+                CornerRadius="25"
+                Padding="0"
+                Margin="10,0"
+                HorizontalOptions="EndAndExpand"
+                VerticalOptions="Center"
+                Command="{Binding CreateColleccionCommand}"
+                    
+                />
+      
+
+
+    </Grid>
+   
+</ContentPage>

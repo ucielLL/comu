@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Comu.view.TheCollectionView"
+              xmlns:cardview ="clr-namespace:PanCardView;assembly=PanCardView"
+               xmlns:proc="clr-namespace:PanCardView.Processors;assembly=PanCardView"
+             xmlns:Pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             NavigationPage.HasNavigationBar="False">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".1*"/>
+            <RowDefinition Height=".9*"/>
+        </Grid.RowDefinitions>
+        <StackLayout Grid.RowSpan="2" >
+            <Pancake:PancakeView  x:Name="PAddImg"
+            BackgroundColor="White"
+            CornerRadius="0,0,35,35">
+                <StackLayout   Orientation="Vertical"
+                           Spacing="0"
+                        >
+                    <Grid  x:Name="GridAddImg" HeightRequest="400"
+                      
+                    >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height=".1*"/>
+                            <RowDefinition Height=".4*" />
+                            <RowDefinition Height=".1*"/>
+                            <RowDefinition Height=".15*"/>
+                            <RowDefinition Height=".15*" />
+                        </Grid.RowDefinitions>
+                        <Label Text="Nueva tarjeta"
+                           TextColor="#1B2639"
+                         FontSize="Title"
+                        VerticalOptions="Center"
+                         HorizontalOptions="Center"
+                         FontAttributes="Bold"/>
+                        <Image Grid.Row="1"
+                   Source="{Binding ImageSourseAdd}"
+                   Aspect="AspectFit"
+                   HorizontalOptions="Center">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding AddImgCommand}" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    
+                        <Label Grid.Row="2" 
+                Text="Agrega una descripción (opcional)"
+                   FontSize="Body"
+                    TextColor="#1B2639"
+                   VerticalOptions="EndAndExpand"
+                   HorizontalOptions="Start"
+                   Margin="10,0"/>
+
+                        <Editor Grid.Row="3"
+                       FontSize="Body"
+                        Placeholder="Texto de ayuda o descripción"
+                        VerticalOptions="StartAndExpand"
+                        AutoSize="TextChanges"
+                        Margin="5,0"
+                        Text="{Binding DesciptionOfNewCard}"        
+                        />
+                        <Button Grid.Row="4"
+                        Text="Agregar tarjeta"
+                          BackgroundColor="#F36D50"   
+                          TextColor="#1B2639"
+                          FontAttributes="Bold"
+                         CornerRadius="24"
+                         HorizontalOptions="CenterAndExpand"
+                       VerticalOptions="CenterAndExpand"
+                          Clicked="AddCrd_Clicked"
+                          />
+
+                    </Grid >
+                    <Grid   BackgroundColor="#1B2639"
+                      >
+                        <Image
+                Source="agregar"
+                        WidthRequest="50"
+                        HorizontalOptions="EndAndExpand"
+                        VerticalOptions="Center"
+                        Margin="0,0,20,0"
+                       >
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Image
+                Source="back2"
+                        WidthRequest="30"
+                        HorizontalOptions="StartAndExpand"
+                        VerticalOptions="Center"
+                        Margin="20,0,0,0"
+                            
+                       >
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Back}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        
+                        <Label Text="{Binding CollectionName}"
+                           FontSize="Title"
+                           TextColor="#F36D50"
+                           HorizontalOptions="CenterAndExpand"
+                           VerticalOptions="Center"/>
+                    </Grid>
+
+                </StackLayout>
+
+            </Pancake:PancakeView>
+        </StackLayout>
+        <cardview:CardsView
+         IsVisible="{Binding CardVisible}"
+            Grid.Row="1"
+             ItemsSource="{Binding ListCard}"
+           >
+            <cardview:CardsView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10"
+                         >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height=".7*"/>
+                            <RowDefinition Height=".3*"/>
+                        </Grid.RowDefinitions>
+                        <Image Source="{Binding pahtImage}"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalOptions="FillAndExpand"
+                               Aspect="AspectFit"
+                               Margin="0,50,0,0"
+                               
+                               />
+                        <Frame Grid.Row="1"
+                               CornerRadius="20"
+                               BorderColor="#F36D50"
+                               HorizontalOptions="CenterAndExpand"
+                               VerticalOptions="StartAndExpand"
+                                Margin="30,0">
+                            <Label 
+                               HorizontalOptions="CenterAndExpand"
+                               VerticalOptions="StartAndExpand"
+                              FontAttributes="Bold"
+                               FontSize="Title"
+                              TextColor="#F36D50"
+                                Margin="20,0"
+                            Text="{Binding Description}" />
+                        </Frame>
+                       
+                    </Grid>
+                </DataTemplate>
+            </cardview:CardsView.ItemTemplate>
+
+        </cardview:CardsView>
+        
+     
+
+       
+
+
+
+    </Grid>
+   
+</ContentPage>
